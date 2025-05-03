@@ -1,0 +1,36 @@
+vlan 30
+ name Vlan_HR
+!
+interface range FastEthernet0/1-3
+ switchport mode access
+ switchport access vlan 30
+ no shutdown
+!
+interface GigabitEthernet0/1
+ switchport mode access
+ switchport access vlan 30
+ no shutdown
+!
+interface range FastEthernet0/1-6
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation shutdown
+ switchport port-security mac-address sticky
+
+ 
+vlan 99
+ name Vlan_SERVER
+!
+interface range FastEthernet0/4-7
+ switchport mode access
+ switchport access vlan 99
+ no shutdown
+!
+
+interface GigabitEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed 30,99
+ no shutdown
+
+
+ 
