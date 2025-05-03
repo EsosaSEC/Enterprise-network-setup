@@ -1,0 +1,18 @@
+vlan 20
+ name Vlan_IT
+!
+interface range FastEthernet0/1-3
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+!
+interface GigabitEthernet0/1
+ switchport mode access
+ switchport access vlan 20
+ no shutdown
+!
+interface range FastEthernet0/1-3
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation shutdown
+ switchport port-security mac-address sticky
